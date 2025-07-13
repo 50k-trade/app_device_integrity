@@ -17,7 +17,6 @@ class AppDeviceIntegrityPlugin: FlutterPlugin, MethodCallHandler, ActivityAware 
 
   private lateinit var channel: MethodChannel
   private lateinit var context: Context
-  private lateinit var activity: Activity
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "app_attestation")
@@ -49,19 +48,11 @@ class AppDeviceIntegrityPlugin: FlutterPlugin, MethodCallHandler, ActivityAware 
     channel.setMethodCallHandler(null)
   }
 
-  override fun onDetachedFromActivity() {
-    activity = null;
-  }
+  override fun onDetachedFromActivity() {}
 
-  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-    activity = binding.activity;
-  }
+  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {}
 
-  override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-    activity = binding.activity;
-  }
+  override fun onAttachedToActivity(binding: ActivityPluginBinding) {}
 
-  override fun onDetachedFromActivityForConfigChanges() {
-    activity = null;
-  }
+  override fun onDetachedFromActivityForConfigChanges() {}
 }
